@@ -11,4 +11,18 @@ function switchTab(event, tabId) {
   // 顯示當前點擊的頁籤與啟用按鈕樣式
   document.getElementById(tabId).classList.add('active');
   event.currentTarget.classList.add('active');
+
+  // 手機版點擊選單項目後自動收起漢堡選單
+  const navbar = document.getElementById('navbar');
+  navbar.classList.remove('show');
 }
+
+// 漢堡選單開關功能
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const navbar = document.getElementById('navbar');
+
+  hamburgerBtn.addEventListener('click', () => {
+    navbar.classList.toggle('show');
+  });
+});
