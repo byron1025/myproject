@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>電動輔助自行車上市行銷案例庫</title>
+  <style>
+    :root {
+      --bg-color: #f4f6f9;
+      --card-bg: #ffffff;
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --primary: #2b6cb0;
+      --accent: #ed8936;
+      --border-color: #e2e8f0;
+      --code-bg: #edf2f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #1a202c;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background-color: #cbd5e0;
+      overflow: hidden;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .img-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background-color: #ebf8ff;
+      color: var(--primary);
+    }
+
+    .prompt-box {
+      background: var(--code-bg);
+      border-left: 4px solid var(--primary);
+      padding: 0.75rem 1rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+
+    .prompt-box span {
+      font-weight: bold;
+      color: #4a5568;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .slogan-box {
+      border: 1px dashed var(--border-color);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      background-color: #fffaf0;
+    }
+
+    .slogan-box span {
+      font-weight: bold;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .slogan-box p {
+      font-size: 1rem;
+      color: #2d3748;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>電動輔助自行車・創意行銷風格範例庫</h1>
+      <p>指令、風格文案與生成廣告圖對照展示</p>
+    </header>
+
+    <main class="gallery-grid">
+
+      <!-- 範例 1：關羽赤兔對比風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_842537501321949244.png" alt="關羽赤兔與現代電輔車對比圖">
+        </div>
+        <div class="card-content">
+          <span class="badge">歷史豪放・古今對稱</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            「昔駕赤兔過五關，今馭電駒走千里！」生一張廣告圖，上半部關羽跨騎赤兔，下半部現代騎士騎電動輔助自行車。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「昔駕赤兔過五關，今馭電駒走千里！」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 2：關羽親自騎車風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_8942602553842891350.png" alt="關羽親自騎電動輔助自行車">
+        </div>
+        <div class="card-content">
+          <span class="badge">趣味穿越・關帝座駕</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            上半部關羽騎赤兔，下半部現代車道改由關公本人親自騎乘電動輔助自行車。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「昔駕赤兔過五關，今馭電駒走千里！腳踩與電力完美結合，輕鬆省力，千里無憂。」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 3：胡適先生倡導科學風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_6239811628632074846.png" alt="胡適先生騎電動輔助自行車">
+        </div>
+        <div class="card-content">
+          <span class="badge">民國文風・科學實證</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用胡適的口吻來介紹這台車，生成復古民國報紙廣告圖，胡適穿著長衫騎這台電動輔助自行車。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「朋友們，這不是什麼大道理。科學的實證告訴我們，腳踏與電能結合，乃是真正的生活實驗。少費體力，多些觀察，豈不快哉？」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 4：外賣小哥胡適版 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_7161332582874877721.png" alt="外賣小哥胡適騎電單車">
+        </div>
+        <div class="card-content">
+          <span class="badge">跨界融合・實踐哲學</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用外賣小哥胡適的口吻來介紹這台車，生成廣告圖，外賣小哥胡適騎這台電單車送貨。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「朋友們，這不是什麼大道理，這是一台真能讓你省力、準時的電單車！」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 5：外賣小哥接地氣風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_453225797129631503.png" alt="現代外賣小哥騎電輔車">
+        </div>
+        <div class="card-content">
+          <span class="badge">都會實戰・高產神器</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用外賣小哥的口吻來介紹這台車，生成現代都會街景廣告圖，外賣小哥騎這台電輔車。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「新車上市！送餐神器！我也換這台了！騎這台，每天多跑十單不是夢！」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 6：退休老王休閒風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_13229333571386925388.png" alt="退休老王騎銀髮電單車">
+        </div>
+        <div class="card-content">
+          <span class="badge">樂齡健康・輕鬆出遊</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用退休老王微胖的口吻來介紹這台車，生成公園綠道廣告圖，微胖親切的老王騎這台車。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「嘿！老夥伴們，誰說退休只能發呆？老王我騎這台『銀髮電駒』，身子骨重一點沒關係，電輕輕一催，爬坡不喘！」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 7：豬哥亮秀場熱鬧風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_15929360641284929235.png" alt="豬哥亮騎電輔車發表會">
+        </div>
+        <div class="card-content">
+          <span class="badge">本土舞台・熱鬧造勢</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用豬哥亮的口吻來介紹這台車廣告台詞一句話，生成熱鬧秀場發表會廣告圖，豬哥亮騎這台車。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「噢～輕輕踩就飛天！這台『豬哥神駒』，真正係予你神氣到沒人有啦！」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 8：Michael Jordan 競技運動風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_9425705424823345057.png" alt="Michael Jordan 騎運動科技電輔車">
+        </div>
+        <div class="card-content">
+          <span class="badge">王者霸氣・掌控飛行</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用 MICHAEL JORDAN 的口吻介紹這台車，廣告台詞一句話，生成國際發表會巨星登場廣告圖。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「掌控飛行，重塑勝利。（MASTER YOUR FLIGHT, REDEFINE VICTORY.）」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 9：Taylor Swift 唯美浪漫風 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_3998521644760063563.png" alt="Taylor Swift 歐風小鎮騎乘">
+        </div>
+        <div class="card-content">
+          <span class="badge">優雅唯美・夢幻旅途</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用 Taylor Swift 的口吻介紹這台車，廣告台詞一句話，歐風童話浪漫街道氛圍。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>「在這場全新的冒險中，重寫旅途故事，閃耀全新魔法，我已準備好出發。」</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 範例 10：四種修辭手法發表會 -->
+      <article class="card">
+        <div class="img-wrapper">
+          <img src="watermarked_img_460436024403153680.png" alt="四種修辭發表會展示圖">
+        </div>
+        <div class="card-content">
+          <span class="badge">專業發布・修辭美學</span>
+          <div class="prompt-box">
+            <span>生圖指令：</span>
+            用排比、對比、比喻、對偶四種不同描述口吻介紹這台車，生成發表會舞台全景廣告圖。
+          </div>
+          <div class="slogan-box">
+            <span>廣告台詞：</span>
+            <p>排比（更輕巧通勤者）、對比（告別氣喘汗流）、比喻（機械獵豹）、對偶（心隨電馳行止有度）。</p>
+          </div>
+        </div>
+      </article>
+
+    </main>
+  </div>
+
+</body>
+</html>
