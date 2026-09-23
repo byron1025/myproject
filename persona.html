@@ -1,0 +1,300 @@
+<div id="persona-showcase-wrapper">
+  <style>
+    /* CSS 樣式區域 - 確保不影響外部網頁，採用獨立命名空間 */
+    #persona-showcase-wrapper {
+      font-family: 'PingFang TC', 'Heiti TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+      color: #2c3e50;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      background: #f4f7f6;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    }
+    
+    #persona-showcase-wrapper h2, 
+    #persona-showcase-wrapper h3, 
+    #persona-showcase-wrapper h4 {
+      margin-top: 0;
+      color: #1a252f;
+    }
+
+    /* 頂部基本資料區塊 */
+    .persona-header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid #e2e8f0;
+      flex-wrap: wrap;
+    }
+
+    .persona-avatar {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      font-size: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .persona-title h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .persona-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: #e1f0fa;
+      color: #2980b9;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* 網格佈局 (背景、目標、痛點) */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      border-top: 4px solid #34495e;
+      transition: transform 0.2s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .info-card.bg-card { border-top-color: #3498db; }
+    .info-card.goals-card { border-top-color: #2ecc71; }
+    .info-card.pain-card { border-top-color: #e74c3c; }
+
+    .info-card h3 {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-card li {
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+      font-size: 15px;
+      color: #546e7a;
+    }
+
+    .info-card li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: inherit;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .bg-card li::before { color: #3498db; }
+    .goals-card li::before { color: #2ecc71; }
+    .pain-card li::before { color: #e74c3c; }
+
+    /* 行動方案區塊 */
+    .solutions-section {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      margin-bottom: 32px;
+    }
+
+    .solutions-section > h3 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    .solution-item {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f8fafc;
+      border-left: 4px solid #f39c12;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .solution-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .solution-item h4 {
+      font-size: 18px;
+      color: #d35400;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .solution-content strong {
+      color: #2c3e50;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .solution-content p {
+      margin: 4px 0 12px 0;
+      font-size: 15px;
+      color: #555;
+    }
+
+    /* 總結金句 */
+    .persona-quote {
+      text-align: center;
+      background: linear-gradient(135deg, #1abc9c, #16a085);
+      color: white;
+      padding: 30px;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(22, 160, 133, 0.3);
+      position: relative;
+    }
+
+    .persona-quote::before {
+      content: '“';
+      font-size: 60px;
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      opacity: 0.2;
+      font-family: serif;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      #persona-showcase-wrapper { padding: 20px; }
+      .persona-header { justify-content: center; text-align: center; }
+      .persona-badges { justify-content: center; }
+    }
+  </style>
+
+  <!-- 頂部資料區 -->
+  <header class="persona-header">
+    <div class="persona-avatar">👨🏻‍🦳</div>
+    <div class="persona-title">
+      <h2>使用者人物誌：王福順</h2>
+      <div class="persona-badges">
+        <span class="badge">👤 65歲</span>
+        <span class="badge">📍 桃園</span>
+        <span class="badge">💼 退休人士 (前電子廠高級主管)</span>
+        <span class="badge">💰 收入35萬 / 存款3,000萬</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 人物誌網格區 -->
+  <div class="persona-grid">
+    <!-- 背景與現況 -->
+    <div class="info-card bg-card">
+      <h3>📖 背景與生活現況</h3>
+      <ul>
+        <li><strong>職涯歷程：</strong>年輕時在電子廠擔任基層員工，憑藉努力一路晉升至高級主管。工作期間非常重視團隊員工與合作。</li>
+        <li><strong>健康狀況：</strong>過去長期的交際應酬與繁忙工作，導致目前身體處於「亞健康」狀態。</li>
+        <li><strong>家庭關係：</strong>過去因過度忙於工作，疏忽了與家人的溝通；目前兒女皆已長大，並有各自的生活。</li>
+      </ul>
+    </div>
+
+    <!-- 目標與期望 -->
+    <div class="info-card goals-card">
+      <h3>🎯 目標與期望</h3>
+      <ul>
+        <li><strong>核心願景：</strong>退休後轉換身份，希望能活出美好且健康的退休人生。</li>
+        <li><strong>健康目標：</strong>改善飲食習慣，並透過運動增強體力。</li>
+        <li><strong>社交與家庭：</strong>結交新朋友，並希望能找回全家人共同活動的時間。</li>
+      </ul>
+    </div>
+
+    <!-- 痛點與挑戰 -->
+    <div class="info-card pain-card">
+      <h3>⚡ 痛點與挑戰</h3>
+      <ul>
+        <li><strong>體力與運動門檻：</strong>自覺體力不夠，擔心參與活動時會跟不上別人，或無法挑戰較高強度的運動。</li>
+        <li><strong>社交圈受限：</strong>脫離職場後，不知道該去哪裡結交新朋友。</li>
+        <li><strong>生活習慣轉換：</strong>目前正處於改變飲食習慣的「陣痛期」，適應上有些困難。</li>
+        <li><strong>家庭凝聚困難：</strong>兒女皆已成年且有各自的生活圈，要將全家人聚在一起活動有難度。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 解決方案區 -->
+  <div class="solutions-section">
+    <h3>✨ 量身打造的行動方案與建議</h3>
+    
+    <div class="solution-item">
+      <h4>🚴‍♂️ 解決方案一：導入「電動輔助自行車」，跨越體力門檻</h4>
+      <div class="solution-content">
+        <p>電動輔助自行車（以踩踏為主、電力為輔）是熟齡族群重拾運動習慣的絕佳工具。</p>
+        <strong>🎯 直擊痛點（體力不夠、怕跟不上）</strong>
+        <p><strong>智慧輔助，不怕落後：</strong>E-bike 可依體力隨時調整電力輔助。平路自己踩踏鍛鍊心肺；遇上坡或體力下滑時開啟電力，輕鬆跟上隊伍，消除「怕拖累別人」的心理壓力。<br>
+        <strong>降低關節與心臟負擔：</strong>避免突如其來的高強度運動造成的傷害，讓處於「亞健康」的王先生能漸進式、可控地享受運動。</p>
+        <strong>📍 桃園在地與補助資源</strong>
+        <p><strong>路線優勢：</strong>桃園市擁有完善的自行車道（如南崁溪、老街溪自行車道），非常適合新手與熟齡族。<br>
+        <strong>善用資源：</strong>可善用桃園市環保局針對「電動輔助自行車」的購車補助（如淘汰老舊機車換購），當作接觸新事物的契機。<br>
+        <strong>建議行動：</strong>直接前往桃園在地的單車旗艦店（如捷安特、美利達），挑選一台幾何設計適合熟齡、騎乘姿勢舒適的跨界休閒型 E-bike。</p>
+      </div>
+    </div>
+
+    <div class="solution-item" style="border-left-color: #3498db;">
+      <h4 style="color: #2980b9;">🤝 解決方案二：參加「自行車社團」，建立全新社交圈</h4>
+      <div class="solution-content">
+        <p>自行車具備高度社交屬性，透過「車友」連結能自然結交新朋友。</p>
+        <strong>🎯 直擊痛點（不知去哪找新朋友）</strong>
+        <p><strong>從實體店面出發：</strong>多數大型單車店週末會舉辦「店騎活動」，並分「休閒組」或「E-bike專屬組」。參加由店長帶隊的活動最為安全，也能認識同區域、志同道合的朋友。<br>
+        <strong>網路社群尋找同好：</strong>可透過 Facebook 搜尋「桃園 單車 樂活」等社團。許多社團主打「美食騎」，運動強度低，社交純度高。<br>
+        <strong>有共同話題，不善交際也不怕：</strong>車隊裡的共同話題就是「單車、路線、風景與美食」，能幫助他放下過去高管身段，輕鬆展開無壓力的交流。</p>
+      </div>
+    </div>
+
+    <div class="solution-item" style="border-left-color: #9b59b6;">
+      <h4 style="color: #8e44ad;">👨‍👩‍👧‍👦 額外效益：創造與家人互動的新契機 (Family Time)</h4>
+      <div class="solution-content">
+        <p>間接解決他「兒女長大，各自生活」的痛點。</p>
+        <p><strong>家庭週末微旅行：</strong>熟悉路線後，週末可提議與兒女騎車。若兒女無運動習慣，可大方幫家人租借電動自行車，規劃「騎車去特色景點吃早午餐」的輕旅行。<br>
+        <strong>無痛凝聚情感：</strong>既不佔用兒女太多時間，又沒有傳統家庭聚餐的嚴肅感，是拉近兩代距離、找回全家人共同活動時間的好方法。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 總結金句 -->
+  <blockquote class="persona-quote">
+    「放下過去高級主管的包袱，戴上安全帽，跨上電動輔助自行車。<br>不需要挑戰極限，只要出發，沿途的微風和新認識的車友，就會帶給您最美好的退休新生活！」
+  </blockquote>
+</div>
