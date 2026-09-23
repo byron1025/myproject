@@ -1,269 +1,321 @@
-<!-- 自行車保養分鏡圖 展示區塊 開始 -->
-<style>
-  /* 專屬 CSS，加上 bike-sb- 前綴避免與您原本的網頁樣式衝突 */
-  .bike-sb-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif;
-  }
-  .bike-sb-grid {
-    display: grid;
-    /* 響應式網格：手機單排，平板雙排，電腦四排 */
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;
-  }
-  .bike-sb-card {
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f0f0f0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .bike-sb-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  }
-  .bike-sb-img-box {
-    width: 100%;
-    aspect-ratio: 16 / 9; /* 保持 16:9 影片比例 */
-    background: #e9ecef;
-    overflow: hidden;
-    position: relative;
-  }
-  .bike-sb-img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .bike-sb-card:hover .bike-sb-img-box img {
-    transform: scale(1.05); /* 滑鼠游標移過去時圖片微放大 */
-  }
-  .bike-sb-info {
-    padding: 16px;
-  }
-  .bike-sb-tag {
-    background: #2b6cb0; /* 沉穩的藍色標籤 */
-    color: #ffffff;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-  }
-  .bike-sb-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0 0 8px 0;
-    color: #2d3748;
-  }
-  .bike-sb-desc {
-    font-size: 14px;
-    color: #718096;
-    line-height: 1.5;
-    margin: 0;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>富國腳踏車店 | 企業分析與行銷策略報告</title>
+  <style>
+    /* 全域設定 */
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      color: #334155;
+    }
 
-<div class="bike-sb-wrapper">
-  <div class="bike-sb-grid">
-    
-    <!-- 卡片 1 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-01.jpg" alt="愁眉苦臉的人">
+    /* 頁首樣式 */
+    .header {
+      background-color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #0f172a;
+      letter-spacing: 1px;
+    }
+    .header p {
+      margin: 10px 0 0 0;
+      font-size: 16px;
+      color: #64748b;
+    }
+
+    /* 主要容器 */
+    .report-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 60px 20px;
+    }
+
+    /* 網格系統：採用自適應卡片設計 */
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      gap: 30px;
+    }
+
+    /* 手機版適配 */
+    @media (max-width: 600px) {
+      .report-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 卡片樣式 */
+    .report-card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .report-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    /* 圖片容器 */
+    .img-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background-color: #e2e8f0;
+      position: relative;
+    }
+    .img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .report-card:hover .img-container img {
+      transform: scale(1.03);
+    }
+
+    /* 文字資訊區塊 */
+    .info-box {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tag {
+      align-self: flex-start;
+      background: #10b981;
+      color: #ffffff;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      color: #1e293b;
+      line-height: 1.3;
+    }
+    .desc {
+      font-size: 15px;
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頁首 -->
+  <header class="header">
+    <h1>富國腳踏車店</h1>
+    <p>企業分析與行銷策略報告展示</p>
+  </header>
+
+  <!-- 報告展示區 -->
+  <div class="report-wrapper">
+    <div class="report-grid">
+
+      <!-- 卡片 1 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing1.jpg" alt="報告封面">
+        </div>
+        <div class="info-box">
+          <span class="tag">Cover</span>
+          <h2 class="title">企業分析與行銷策略報告</h2>
+          <p class="desc">富國腳踏車店專屬行銷企劃封面，由陳皇名報告。</p>
+        </div>
       </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 1</span>
-        <h3 class="bike-sb-title">愁眉苦臉的人</h3>
-        <p class="bike-sb-desc">鏡頭放大靠近臉部，感受車主的煩惱與無奈。</p>
+
+      <!-- 卡片 2 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing2.jpg" alt="企業簡介">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 1</span>
+          <h2 class="title">企業簡介</h2>
+          <p class="desc">一甲子，只為你的安全。展現資深黑手底子與紮實的維修手藝。</p>
+        </div>
       </div>
+
+      <!-- 卡片 3 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing3.jpg" alt="關於富國腳踏車店">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 1</span>
+          <h2 class="title">關於富國腳踏車店</h2>
+          <p class="desc">六十年的信任、安全與手藝。強調實體店家負責與到府服務的承諾。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 4 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing4.jpg" alt="PEST 分析">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 2</span>
+          <h2 class="title">PEST 總體環境分析</h2>
+          <p class="desc">深入剖析政治 (P)、經濟 (E)、社會 (S) 與科技 (T) 四大面向對自行車產業的影響。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 5 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing5.jpg" alt="SWOT 分析">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 3</span>
+          <h2 class="title">SWOT 交叉策略矩陣</h2>
+          <p class="desc">透過 TOWS 矩陣，擬定 SO、ST、WO、WT 策略，發揮 60 年專業優勢並應對外部挑戰。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 6 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing6.jpg" alt="目標受眾">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 4</span>
+          <h2 class="title">目標受眾定位</h2>
+          <p class="desc">聚焦三大高終身價值 (LTV) 客群：中高齡 E-bike 代步族、在地短距離購車族與老主顧。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 7 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing7.jpg" alt="賣方 4P 與買方 4C 分析">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 5</span>
+          <h2 class="title">賣方 4P 與買方 4C 分析</h2>
+          <p class="desc">結合產品價值、價格成本、通路便利性與推廣溝通，打造全方位行銷組合。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 8 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing8.jpg" alt="價值導向的定價策略">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 6</span>
+          <h2 class="title">價值導向的定價策略</h2>
+          <p class="desc">透過透明定價與精準客群篩選，建立專業壁壘，提供差異化服務價值以脫離價格戰。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 9 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing9.jpg" alt="數位與實體整合的社群經營">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 7</span>
+          <h2 class="title">數位與實體整合社群經營</h2>
+          <p class="desc">B2C 之 O2O 線上導線下策略，涵蓋 Google 商家檔案優化與內容行銷。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 10 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing10.jpg" alt="數據驅動的行銷佈局">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 8</span>
+          <h2 class="title">數據驅動的行銷佈局</h2>
+          <p class="desc">透過精準關鍵字策略、流量分析追蹤與成效指標設定，動態調整行銷資源。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 11 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing11.jpg" alt="預算規劃與分配">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 9</span>
+          <h2 class="title">預算規劃與資源分配</h2>
+          <p class="desc">針對各項數位行銷與實體活動，進行合理的資金與人力資源佈局規劃。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 12 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing12.jpg" alt="專案執行時程">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 10</span>
+          <h2 class="title">專案執行時程 (Gantt Chart)</h2>
+          <p class="desc">列出短、中、長期的行銷推廣計畫里程碑，確保各階段策略準時落地。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 13 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing13.jpg" alt="預期效益">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 11</span>
+          <h2 class="title">預期效益評估</h2>
+          <p class="desc">預估策略執行後，在品牌聲量、顧客留存率與整體營業額的實質成長目標。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 14 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing14.jpg" alt="風險評估">
+        </div>
+        <div class="info-box">
+          <span class="tag">Ch. 12</span>
+          <h2 class="title">風險評估與控管機制</h2>
+          <p class="desc">列舉潛在的市場變動與價格競爭風險，並提出對應的防禦與備案措施。</p>
+        </div>
+      </div>
+
+      <!-- 卡片 15 -->
+      <div class="report-card">
+        <div class="img-container">
+          <img src="./images/marketing15.jpg" alt="結語與未來展望">
+        </div>
+        <div class="info-box">
+          <span class="tag">Conclusion</span>
+          <h2 class="title">結語與未來展望</h2>
+          <p class="desc">堅守 60 年職人精神，透過數位轉型與社群深耕，打造下一個輝煌的里程碑。</p>
+        </div>
+      </div>
+
     </div>
-
-    <!-- 卡片 2 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-02.jpg" alt="破舊自行車">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 2</span>
-        <h3 class="bike-sb-title">破舊自行車</h3>
-        <p class="bike-sb-desc">鏡頭平移，展示整台老舊自行車的破敗感與金屬摩擦聲。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 3 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-03.jpg" alt="局部特寫(輪子)">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 3</span>
-        <h3 class="bike-sb-title">局部特寫 (輪子)</h3>
-        <p class="bike-sb-desc">短暫停留，凸顯完全扁塌、龜裂的輪胎。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 4 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-04.jpg" alt="局部特寫(飛輪)">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 4</span>
-        <h3 class="bike-sb-title">局部特寫 (飛輪)</h3>
-        <p class="bike-sb-desc">特寫沾滿油泥與生鏽的飛輪細節，伴隨金屬碰撞聲。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 5 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-05.jpg" alt="網路評價4.7分">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 5</span>
-        <h3 class="bike-sb-title">網路評價 4.7 分</h3>
-        <p class="bike-sb-desc">畫面轉清晰，點擊手機搜尋到高評價店家，節奏轉為輕快。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 6 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-06.jpg" alt="老闆父子">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 6</span>
-        <h3 class="bike-sb-title">老闆父子迎接</h3>
-        <p class="bike-sb-desc">鏡頭推進，看見溫馨的車行店面與父子倆親切的笑容。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 7 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-07.jpg" alt="討論保養方案">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 7</span>
-        <h3 class="bike-sb-title">討論保養方案</h3>
-        <p class="bike-sb-desc">模擬旁觀者視角，看著技師與車主溫和專業的交談互動。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 8 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-08.jpg" alt="估價單及客戶資料">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 8</span>
-        <h3 class="bike-sb-title">確認估價單</h3>
-        <p class="bike-sb-desc">快速帶過確認維修項目與簽名的動作細節。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 9 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-09.jpg" alt="換內外胎">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 9</span>
-        <h3 class="bike-sb-title">俐落換胎</h3>
-        <p class="bike-sb-desc">維修蒙太奇起點，節奏加快，技師俐落地卸下輪胎。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 10 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-10.jpg" alt="洗飛輪">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 10</span>
-        <h3 class="bike-sb-title">深度洗飛輪</h3>
-        <p class="bike-sb-desc">配合強烈節奏感的刷洗聲，展現去除油垢的療癒過程。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 11 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-11.jpg" alt="洗車">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 11</span>
-        <h3 class="bike-sb-title">全車泡沫清洗</h3>
-        <p class="bike-sb-desc">伴隨流水聲與歡笑聲，努力刷洗車身泥濘。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 12 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-12.jpg" alt="煥然一新車子">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 12</span>
-        <h3 class="bike-sb-title">煥然一新</h3>
-        <p class="bike-sb-desc">重點大特寫！搭配星光閃爍特效，展現變身後的完美新車。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 13 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-13.jpg" alt="電話通知">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 13</span>
-        <h3 class="bike-sb-title">電話通知取車</h3>
-        <p class="bike-sb-desc">左右分割畫面，節奏輕快地交待通知車主取車的過程。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 14 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-14.jpg" alt="客戶驚喜">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 14</span>
-        <h3 class="bike-sb-title">客戶驚喜反應</h3>
-        <p class="bike-sb-desc">畫面放大車主的臉部特寫，呈現「簡直像新的一樣」的喜悅。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 15 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-15.jpg" alt="騎車開心行車">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 15</span>
-        <h3 class="bike-sb-title">迎風騎行</h3>
-        <p class="bike-sb-desc">跟拍長鏡頭，跟隨主角在陽光下輕快騎車，充滿自由感。</p>
-      </div>
-    </div>
-
-    <!-- 卡片 16 -->
-    <div class="bike-sb-card">
-      <div class="bike-sb-img-box">
-        <img src="scene-16.jpg" alt="留下五分評價">
-      </div>
-      <div class="bike-sb-info">
-        <span class="bike-sb-tag">Scene 16</span>
-        <h3 class="bike-sb-title">留下五星評價</h3>
-        <p class="bike-sb-desc">點亮最後一顆星星，音樂漸弱，畫面淡出完美收尾。</p>
-      </div>
-    </div>
-
   </div>
-</div>
-<!-- 自行車保養分鏡圖 展示區塊 結束 -->
+
+</body>
+</html>
