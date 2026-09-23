@@ -7,7 +7,7 @@ body {
   color: #333;
 }
 
-/* 頂部導覽列 */
+/* 頂部導覽列容器 */
 header {
   background-color: #1e293b;
   position: sticky;
@@ -16,12 +16,16 @@ header {
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 電腦版選單樣式 */
 .navbar {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
 .nav-btn {
@@ -32,6 +36,8 @@ header {
   font-size: 15px;
   cursor: pointer;
   transition: all 0.3s;
+  width: 100%;
+  text-align: center;
 }
 
 .nav-btn:hover {
@@ -44,6 +50,46 @@ header {
   background-color: #0f172a;
   border-bottom: 3px solid #38bdf8;
   font-weight: bold;
+}
+
+/* 預設隱藏漢堡按鈕 */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+/* 手機版響應式設定 (螢幕寬度 < 768px) */
+@media (max-width: 767px) {
+  .hamburger {
+    display: block; /* 顯示漢堡按鈕 */
+  }
+
+  .navbar {
+    display: none; /* 預設隱藏選單 */
+    flex-direction: column;
+    background-color: #1e293b;
+    width: 100%;
+  }
+
+  .navbar.show {
+    display: flex; /* 點擊漢堡後展開選單 */
+  }
+
+  .nav-btn {
+    text-align: left;
+    padding: 14px 24px;
+    border-bottom: 1px solid #334155;
+  }
+
+  .nav-btn.active {
+    border-bottom: 1px solid #334155;
+    border-left: 4px solid #38bdf8;
+  }
 }
 
 /* 內容主要區塊 */
