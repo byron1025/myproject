@@ -1,0 +1,269 @@
+<!-- 自行車保養分鏡圖 展示區塊 開始 -->
+<style>
+  /* 專屬 CSS，加上 bike-sb- 前綴避免與您原本的網頁樣式衝突 */
+  .bike-sb-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif;
+  }
+  .bike-sb-grid {
+    display: grid;
+    /* 響應式網格：手機單排，平板雙排，電腦四排 */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .bike-sb-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .bike-sb-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+  .bike-sb-img-box {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 保持 16:9 影片比例 */
+    background: #e9ecef;
+    overflow: hidden;
+    position: relative;
+  }
+  .bike-sb-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .bike-sb-card:hover .bike-sb-img-box img {
+    transform: scale(1.05); /* 滑鼠游標移過去時圖片微放大 */
+  }
+  .bike-sb-info {
+    padding: 16px;
+  }
+  .bike-sb-tag {
+    background: #2b6cb0; /* 沉穩的藍色標籤 */
+    color: #ffffff;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  .bike-sb-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: #2d3748;
+  }
+  .bike-sb-desc {
+    font-size: 14px;
+    color: #718096;
+    line-height: 1.5;
+    margin: 0;
+  }
+</style>
+
+<div class="bike-sb-wrapper">
+  <div class="bike-sb-grid">
+    
+    <!-- 卡片 1 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-01.jpg" alt="愁眉苦臉的人">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 1</span>
+        <h3 class="bike-sb-title">愁眉苦臉的人</h3>
+        <p class="bike-sb-desc">鏡頭放大靠近臉部，感受車主的煩惱與無奈。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 2 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-02.jpg" alt="破舊自行車">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 2</span>
+        <h3 class="bike-sb-title">破舊自行車</h3>
+        <p class="bike-sb-desc">鏡頭平移，展示整台老舊自行車的破敗感與金屬摩擦聲。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 3 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-03.jpg" alt="局部特寫(輪子)">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 3</span>
+        <h3 class="bike-sb-title">局部特寫 (輪子)</h3>
+        <p class="bike-sb-desc">短暫停留，凸顯完全扁塌、龜裂的輪胎。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 4 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-04.jpg" alt="局部特寫(飛輪)">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 4</span>
+        <h3 class="bike-sb-title">局部特寫 (飛輪)</h3>
+        <p class="bike-sb-desc">特寫沾滿油泥與生鏽的飛輪細節，伴隨金屬碰撞聲。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 5 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-05.jpg" alt="網路評價4.7分">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 5</span>
+        <h3 class="bike-sb-title">網路評價 4.7 分</h3>
+        <p class="bike-sb-desc">畫面轉清晰，點擊手機搜尋到高評價店家，節奏轉為輕快。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 6 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-06.jpg" alt="老闆父子">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 6</span>
+        <h3 class="bike-sb-title">老闆父子迎接</h3>
+        <p class="bike-sb-desc">鏡頭推進，看見溫馨的車行店面與父子倆親切的笑容。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 7 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-07.jpg" alt="討論保養方案">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 7</span>
+        <h3 class="bike-sb-title">討論保養方案</h3>
+        <p class="bike-sb-desc">模擬旁觀者視角，看著技師與車主溫和專業的交談互動。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 8 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-08.jpg" alt="估價單及客戶資料">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 8</span>
+        <h3 class="bike-sb-title">確認估價單</h3>
+        <p class="bike-sb-desc">快速帶過確認維修項目與簽名的動作細節。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 9 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-09.jpg" alt="換內外胎">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 9</span>
+        <h3 class="bike-sb-title">俐落換胎</h3>
+        <p class="bike-sb-desc">維修蒙太奇起點，節奏加快，技師俐落地卸下輪胎。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 10 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-10.jpg" alt="洗飛輪">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 10</span>
+        <h3 class="bike-sb-title">深度洗飛輪</h3>
+        <p class="bike-sb-desc">配合強烈節奏感的刷洗聲，展現去除油垢的療癒過程。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 11 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-11.jpg" alt="洗車">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 11</span>
+        <h3 class="bike-sb-title">全車泡沫清洗</h3>
+        <p class="bike-sb-desc">伴隨流水聲與歡笑聲，努力刷洗車身泥濘。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 12 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-12.jpg" alt="煥然一新車子">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 12</span>
+        <h3 class="bike-sb-title">煥然一新</h3>
+        <p class="bike-sb-desc">重點大特寫！搭配星光閃爍特效，展現變身後的完美新車。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 13 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-13.jpg" alt="電話通知">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 13</span>
+        <h3 class="bike-sb-title">電話通知取車</h3>
+        <p class="bike-sb-desc">左右分割畫面，節奏輕快地交待通知車主取車的過程。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 14 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-14.jpg" alt="客戶驚喜">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 14</span>
+        <h3 class="bike-sb-title">客戶驚喜反應</h3>
+        <p class="bike-sb-desc">畫面放大車主的臉部特寫，呈現「簡直像新的一樣」的喜悅。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 15 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-15.jpg" alt="騎車開心行車">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 15</span>
+        <h3 class="bike-sb-title">迎風騎行</h3>
+        <p class="bike-sb-desc">跟拍長鏡頭，跟隨主角在陽光下輕快騎車，充滿自由感。</p>
+      </div>
+    </div>
+
+    <!-- 卡片 16 -->
+    <div class="bike-sb-card">
+      <div class="bike-sb-img-box">
+        <img src="scene-16.jpg" alt="留下五分評價">
+      </div>
+      <div class="bike-sb-info">
+        <span class="bike-sb-tag">Scene 16</span>
+        <h3 class="bike-sb-title">留下五星評價</h3>
+        <p class="bike-sb-desc">點亮最後一顆星星，音樂漸弱，畫面淡出完美收尾。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- 自行車保養分鏡圖 展示區塊 結束 -->
