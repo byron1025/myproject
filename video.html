@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自行車保養短影音企劃案</title>
+    <title>自行車專業保養 — 腳本企劃</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -35,21 +35,21 @@
 </head>
 <body class="bg-gray-50 font-sans text-gray-800 antialiased pt-16">
 
-    <!-- 導覽列 (Navbar) -->
+    <!-- 頂部導覽列 (Navbar) -->
     <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
-                <!-- Logo / 標題 -->
+                <!-- Logo 與標題 -->
                 <div class="flex items-center">
-                    <span class="text-xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
+                    <a href="#" class="text-xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
                         <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
                         </svg>
                         自行車保養短影音企劃
-                    </span>
+                    </a>
                 </div>
 
-                <!-- 桌上型電腦選單 -->
+                <!-- 電腦版選單 -->
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
                     <a href="#structure" class="text-gray-600 hover:text-brand-600 transition-colors">核心結構</a>
                     <a href="#storyboard" class="text-gray-600 hover:text-brand-600 transition-colors">分鏡腳本</a>
@@ -58,12 +58,14 @@
                     </span>
                 </div>
 
-                <!-- 手機版漢堡按鈕 (Hamburger Button) -->
+                <!-- 手機版漢堡選單按鈕 (Hamburger Button) -->
                 <div class="flex items-center md:hidden">
-                    <button id="menu-btn" type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2 rounded-md" aria-label="Toggle Menu">
+                    <button id="menu-btn" type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2 rounded-md" aria-label="開啟選單">
+                        <!-- 圖示：三條線 (Hamburger) -->
                         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
+                        <!-- 圖示：打叉 (Close) -->
                         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
@@ -76,7 +78,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-2 text-sm font-medium shadow-lg">
             <a href="#structure" class="mobile-link block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition-colors">核心結構</a>
             <a href="#storyboard" class="mobile-link block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition-colors">分鏡腳本</a>
-            <div class="pt-2">
+            <div class="pt-2 px-3">
                 <span class="inline-block bg-brand-50 text-brand-700 px-3 py-1 rounded-full border border-brand-100 text-xs font-semibold">
                     總長度：81 秒
                 </span>
@@ -124,7 +126,7 @@
             </div>
         </section>
 
-        <!-- 分鏡卡片列表 -->
+        <!-- 分鏡卡片列表 (15 個分鏡) -->
         <section id="storyboard" class="scroll-mt-20">
             <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <span class="w-2 h-6 bg-brand-500 rounded-full inline-block"></span>
@@ -449,7 +451,7 @@
                         <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-bold text-gray-900 mb-3">陽光下開心騎行 (Call to Action)</h3>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">陽光下開心騎行 (CTA)</h3>
                         <div class="space-y-3 flex-grow text-sm">
                             <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
                                 <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
@@ -468,14 +470,14 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- 頁尾 -->
     <footer class="bg-white border-t border-gray-200 py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
             © 自行車保養短影音企劃提案 | 總長度 81 秒
         </div>
     </footer>
 
-    <!-- JavaScript 漢堡選單開關邏輯 -->
+    <!-- 漢堡選單互動 JavaScript 腳本 -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -483,6 +485,7 @@
         const iconClose = document.getElementById('icon-close');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
+        // 切換選單顯示/隱藏與按鈕圖示
         function toggleMenu() {
             mobileMenu.classList.toggle('hidden');
             iconOpen.classList.toggle('hidden');
@@ -491,7 +494,7 @@
 
         menuBtn.addEventListener('click', toggleMenu);
 
-        // 點擊選單連結後自動收起選單
+        // 點擊手機版選單連結後自動關閉選單
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (!mobileMenu.classList.contains('hidden')) {
