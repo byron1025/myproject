@@ -1,0 +1,44 @@
+<!--
+  這份 header.html 是「導覽列的主範本」,不會被瀏覽器直接讀取。
+
+  為什麼不用 JS fetch() 自動載入這個檔案?
+  因為用 file:// 直接雙擊打開 html 時,瀏覽器的安全機制(CORS)
+  會擋掉 fetch 本機檔案的請求,導覽列會讀不到、整頁空白。
+  只有放到真正的網頁伺服器(例如 GitHub Pages)上,fetch 才會正常運作。
+
+  所以目前的作法是:把下面這段導覽列「複製貼上」到每一個 html 頁面的
+  <body> 最上方(6 個頁面都已經幫你貼好了)。
+  以後如果要「新增頁面」或「調整選單項目」,請:
+    1. 先改這份 header.html 當作最新版本
+    2. 再把改好的內容,貼到每個頁面裡取代原本的 <header class="site-header">...</header>
+
+  每個頁面裡,目前所在的那一頁,其 <a> 會多一個 class="nav-link is-active"
+  用來把目前頁面反白標示,記得複製貼上時要保留/調整這個 class。
+-->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">B.</span>
+      <span class="brand-name">BYRON STUDIO</span>
+    </a>
+
+    <nav class="site-nav" id="site-nav">
+      <a href="index.html" class="nav-link">🏠 首頁</a>
+      <a href="copywriting.html" class="nav-link">✍️ 文案撰寫</a>
+      <a href="video.html" class="nav-link">🎬 短影音</a>
+      <a href="ps.html" class="nav-link">🎨 PS</a>
+      <a href="ai.html" class="nav-link">✒️ AI</a>
+      <a href="marketing.html" class="nav-link">📈 網路行銷</a>
+    </nav>
+
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="開啟選單">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
+<!-- ↑ 這個遮罩層要跟著一起複製:手機選單打開時會出現半透明背景,
+     點擊遮罩處也會自動關閉選單。 -->
+
