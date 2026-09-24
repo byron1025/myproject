@@ -1,57 +1,504 @@
-<!-- Sticky Header with Navigation & Hamburger Menu -->
-<header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            
-            <!-- 1. Logo / 品牌標題 -->
-            <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span class="font-bold text-xl tracking-tight text-gray-900">企劃提案</span>
-            </div>
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自行車保養短影音企劃案</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased pt-16">
 
-            <!-- 2. 電腦版導覽連結 (md 以上顯示) -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="#narrative" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">敘事結構</a>
-                <a href="#storyboard" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">分鏡腳本</a>
-            </nav>
+    <!-- 導覽列 (Navbar) -->
+    <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo / 標題 -->
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                        自行車保養短影音企劃
+                    </span>
+                </div>
 
-            <!-- 3. 手機版漢堡按鈕 (md 以下顯示) -->
-            <div class="md:hidden flex items-center">
-                <button id="menu-btn" type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2" aria-label="Toggle Menu">
-                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <!-- 桌上型電腦選單 -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#structure" class="text-gray-600 hover:text-brand-600 transition-colors">核心結構</a>
+                    <a href="#storyboard" class="text-gray-600 hover:text-brand-600 transition-colors">分鏡腳本</a>
+                    <span class="bg-brand-50 text-brand-700 px-3 py-1 rounded-full border border-brand-100 text-xs font-semibold">
+                        總長度：81 秒
+                    </span>
+                </div>
+
+                <!-- 手機版漢堡按鈕 (Hamburger Button) -->
+                <div class="flex items-center md:hidden">
+                    <button id="menu-btn" type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2 rounded-md" aria-label="Toggle Menu">
+                        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            
         </div>
-    </div>
 
-    <!-- 4. 手機版下拉選單區塊 -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-2">
-        <a href="#narrative" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50">敘事結構</a>
-        <a href="#storyboard" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50">分鏡腳本</a>
-    </div>
+        <!-- 手機版下拉選單 (Mobile Menu) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-2 text-sm font-medium shadow-lg">
+            <a href="#structure" class="mobile-link block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition-colors">核心結構</a>
+            <a href="#storyboard" class="mobile-link block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition-colors">分鏡腳本</a>
+            <div class="pt-2">
+                <span class="inline-block bg-brand-50 text-brand-700 px-3 py-1 rounded-full border border-brand-100 text-xs font-semibold">
+                    總長度：81 秒
+                </span>
+            </div>
+        </div>
+    </nav>
 
-    <!-- 5. 漢堡選單互動 JavaScript -->
+    <!-- 主內容區 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- 頁面標頭 Hero -->
+        <header class="text-center space-y-4 max-w-3xl mx-auto">
+            <span class="text-brand-600 text-sm font-bold tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full border border-brand-100">Video Storyboard</span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">自行車專業保養 — 腳本企劃</h1>
+            <p class="text-gray-600 text-base sm:text-lg">透過「痛點引導 $\rightarrow$ 專業信任 $\rightarrow$ 精細保養 $\rightarrow$ 滿意騎行」的節奏，展現極致的服務質感。</p>
+        </header>
+
+        <!-- 核心結構 (起承轉合) -->
+        <section id="structure" class="scroll-mt-20">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                <span class="w-2 h-6 bg-brand-500 rounded-full inline-block"></span>
+                核心敘事結構（起承轉合）
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-brand-600 mb-1">【起】痛點現狀 (0-11s)</div>
+                    <div class="text-sm font-bold text-gray-800 mb-2">卡滿髒污與異音</div>
+                    <p class="text-xs text-gray-500 leading-relaxed">展示自行車傳動系統積油垢、變速不順的痛點，引發車主共鳴。</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-brand-600 mb-1">【承】信任建立 (11-26s)</div>
+                    <div class="text-sm font-bold text-gray-800 mb-2">專業接待與全車檢查</div>
+                    <p class="text-xs text-gray-500 leading-relaxed">技師細心接待、填寫工單與精密測量，展現透明且標準化的服務流程。</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-brand-600 mb-1">【轉】療癒過程 (26-62s)</div>
+                    <div class="text-sm font-bold text-gray-800 mb-2">深層拆解與洗鏈潤滑</div>
+                    <p class="text-xs text-gray-500 leading-relaxed">特寫零件洗滌與泡沫去污過程，帶出強烈的「清潔療癒感」與技術細節。</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-xs font-bold text-brand-600 mb-1">【合】完美交付 (62-81s)</div>
+                    <div class="text-sm font-bold text-gray-800 mb-2">煥然一新與流暢騎乘</div>
+                    <p class="text-xs text-gray-500 leading-relaxed">對比保養前後成果，最後以順暢騎行的畫面作結，呼籲定期保養。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分鏡卡片列表 -->
+        <section id="storyboard" class="scroll-mt-20">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                <span class="w-2 h-6 bg-brand-500 rounded-full inline-block"></span>
+                分鏡腳本細節 (全 15 鏡)
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Scene 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/01.jpg" alt="髒污鏈條特寫" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">01</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">髒污鏈條特寫</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">鏡頭由遠慢慢拉近，特寫鏈條與飛輪上積滿的黑油垢與沙塵。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">背景音樂沉重低回。旁白：「你的愛車，是不是很久沒有好好呼吸了？」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/02.jpg" alt="變速卡頓異音" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">02</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">變速卡頓與異音</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">踏板轉動時出現跳齒、鏈條發出摩擦聲，畫面小幅震動強調卡頓感。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">收錄清晰的金屬摩擦聲。字幕標註：「異音、卡頓、磨損增加」。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/03.jpg" alt="推車進店接待" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">03</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">推車進店接待</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">車主將車推進明亮乾淨的門市，技師微笑親切前來迎車接待。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">音樂轉為輕鬆明快。旁白：「交給專業，讓保養變簡單。」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/04.jpg" alt="全車點檢紀錄" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">04</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">全車點檢紀錄</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">技師拿著檢測表，逐一確認煞車、胎壓與傳動耗損，並向車主說明。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">旁白：「標準化 20 項全車健檢，不放過任何安全細節。」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 5 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/05.jpg" alt="鏈條規量測" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">05</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">鏈條規精準量測</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">特寫鏈條量測規卡入鏈條，精準判定伸長量與更換需求。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">畫面出現數據化特效：「拉伸率測量中」。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 6 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/06.jpg" alt="架車拆解零件" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">06</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">架車拆解零件</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">將車架上修車架，快速流暢地卸下後輪與傳動系統元件。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">節奏感強烈的音樂點擊聲。字幕：「專業拆卸，深層保養」。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 7 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/07.jpg" alt="噴洗劑泡沫溶解" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">07</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">噴洗劑泡沫溶解</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">噴上專用清潔泡沫，特寫油垢隨泡沫迅速融化流下的療癒畫面。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">收錄滋滋作響的泡沫聲。旁白：「專用除油劑，秒速瓦解頑固油垢。」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 8 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/08.jpg" alt="專用洗鏈刷刷洗" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">08</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">專用洗鏈刷刷洗</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">技師手持多角度刷具，仔細刷洗飛輪齒片與鏈條轉軸死角。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">刷洗的沙沙聲。字幕：「細節到位，死角徹底乾淨」。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 9 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/09.jpg" alt="清水沖洗乾淨" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">09</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">清水沖洗乾淨</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">低壓水槍沖洗掉泡沫，露出底下金屬原色的光澤感。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">清爽的水流聲。旁白：「還原金屬原本的耀眼質感。」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 10 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/10.jpg" alt="高壓風槍吹乾" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">10</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">高壓風槍徹底吹乾</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">使用風槍吹除鏈條與螺絲縫隙中的殘留水滴，防範生鏽。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">風槍風吹聲。字幕：「完全乾燥，防鏽第一步」。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 11 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/11.jpg" alt="精準上潤滑油" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">11</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">精準滴上潤滑油</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">特寫鏈條油一滴滴精準滴在鏈條目上，隨後擦去多餘油脂。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">旁白：「點對點潤滑，減少運轉阻力與磨損。」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 12 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/12.jpg" alt="變速精細微調" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">12</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">變速精細微調</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">技師轉動微調螺絲，手撥變速，鏈條流暢升降齒片。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">收錄清脆俐落的「咔噠」變速聲。字幕：「微調校正，檔位精準到位」。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 13 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/13.jpg" alt="前後對比分割" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">13</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">前後對比分割畫面</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">左右分割畫面，左邊是保養前的油污狀態，右邊是保養後的亮麗狀態。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">音效：「叮！」大大的 BEFORE / AFTER 對比標籤。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 14 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/14.jpg" alt="車主滿意交車" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">14</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">5秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">車主滿意交車</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">技師將保養完成的車交還車主，車主試轉踏板露出滿意微笑。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">旁白：「定期保養，讓每一次踩踏都順暢無比。」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 15 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full animate-fade-in">
+                    <div class="relative overflow-hidden aspect-video bg-gray-200">
+                        <img src="./images/15.jpg" alt="騎車開心行車" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-black/70 backdrop-blur text-white text-xs font-bold px-2 py-1 rounded">15</div>
+                        <div class="absolute bottom-3 right-3 bg-brand-500 text-white text-xs font-bold px-2 py-1 rounded shadow">6秒</div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-gray-900 mb-3">陽光下開心騎行 (Call to Action)</h3>
+                        <div class="space-y-3 flex-grow text-sm">
+                            <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                                <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">畫面動態</span>
+                                <span class="text-gray-800">鏡頭追隨車主在陽光下順暢騎行，最後拉遠展示歡樂感並帶出品牌資訊。</span>
+                            </div>
+                            <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-50">
+                                <span class="block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">聲音與文字</span>
+                                <span class="text-gray-800">音樂達到高潮後淡出。旁白：「給愛車最好的照顧，重獲騎乘樂趣！立即預約保養。」</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            © 自行車保養短影音企劃提案 | 總長度 81 秒
+        </div>
+    </footer>
+
+    <!-- JavaScript 漢堡選單開關邏輯 -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // 點擊漢堡按鈕切換選單顯隱
-        menuBtn.addEventListener('click', () => {
+        function toggleMenu() {
             mobileMenu.classList.toggle('hidden');
-        });
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        }
 
-        // 點擊選單項目後自動收起選單
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // 點擊選單連結後自動收起選單
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
             });
         });
     </script>
-</header>
+</body>
+</html>
