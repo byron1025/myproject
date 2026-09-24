@@ -4,19 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>個人作品集與服務網站 - 首頁</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- 引入共用 CSS 樣式表 -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- 頂部導覽列容器 (由 JS 自動載入 header.html) -->
-  <header id="global-header"></header>
+  <!-- 頂部導覽列容器 (由 script.js 自動載入 header.html) -->
+  <header class="site-header" id="header-placeholder"></header>
 
   <main class="content-container">
 
-    <!-- 首頁內容 -->
+    <!-- 首頁主要內容 -->
     <section class="tab-content active">
       <h2>🏠 歡迎來到我的個人網站</h2>
       <p>這裡展示我的各項專業領域，包含文案撰寫、短影音創作、視覺設計與網路行銷企劃。</p>
+      
       <div class="card-grid">
         <a href="copywriting.html" class="info-card-link">
           <div class="info-card">
@@ -47,43 +49,7 @@
 
   </main>
 
-  <!-- 自動載入 header.html 與漢堡選單開關腳本 -->
-  <script>
-    fetch('header.html')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('無法載入 header.html');
-        }
-        return response.text();
-      })
-      .then(data => {
-        // 1. 將 header.html 的內容放入 <header id="global-header">
-        document.getElementById('global-header').innerHTML = data;
-
-        // 2. 取得目前的檔名並自動替當前頁面連結加上 active 樣式
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        const navLinks = document.querySelectorAll('#navbar a');
-        
-        navLinks.forEach(link => {
-          if (link.getAttribute('href') === currentPage) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-
-        // 3. 綁定漢堡選單點擊開關事件（解決手機版點擊無反應問題）
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const navbar = document.getElementById('navbar');
-
-        if (hamburgerBtn && navbar) {
-          hamburgerBtn.addEventListener('click', () => {
-            navbar.classList.toggle('show');
-          });
-        }
-      })
-      .catch(error => console.error('載入導覽列失敗:', error));
-  </script>
+  <!-- 引入共用 JavaScript 邏輯 (包含自動載入 Header 與選單互動) -->
   <script src="script.js"></script>
 </body>
 </html>
