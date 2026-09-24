@@ -1,51 +1,30 @@
 <!-- header.html -->
-<div class="bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="bg-white/90 backdrop-blur border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         
-        <!-- 左側 Logo / 標題 -->
+        <!-- 左邊：Logo -->
         <a href="index.html" class="flex items-center gap-2 font-bold text-gray-900 text-lg">
-            <span class="w-8 h-8 rounded-xl bg-green-600 text-white flex items-center justify-center font-extrabold text-sm">
-                P
-            </span>
+            <span class="w-8 h-8 rounded-lg bg-green-600 text-white flex items-center justify-center font-bold">P</span>
             <span>作品集 Portfolio</span>
         </a>
 
-        <!-- 選單項目 -->
-        <nav class="hidden md:flex items-center gap-1 font-medium text-sm text-gray-600">
-            <a href="index.html" class="nav-btn px-3.5 py-2 rounded-full hover:text-green-600 hover:bg-green-50 transition">🏠 首頁</a>
-            <a href="copywriting.html" class="nav-btn px-3.5 py-2 rounded-full hover:text-green-600 hover:bg-green-50 transition">✍️ 文案撰寫</a>
-            <a href="video.html" class="nav-btn px-3.5 py-2 rounded-full hover:text-green-600 hover:bg-green-50 transition">🎬 短影音</a>
-            <a href="photoshop.html" class="nav-btn px-3.5 py-2 rounded-full hover:text-green-600 hover:bg-green-50 transition">🎨 PS (Photoshop)</a>
-            <a href="illustrator.html" class="nav-btn px-3.5 py-2 rounded-full hover:text-green-600 hover:bg-green-50 transition">✒️ AI (Illustrator)</a>
+        <!-- 右邊：選單按鈕 -->
+        <nav class="flex items-center gap-2 font-medium text-sm text-gray-600">
+            <a href="index.html" class="nav-btn px-3 py-2 rounded-lg hover:text-green-600 hover:bg-green-50 transition">🏠 首頁</a>
+            <a href="copywriting.html" class="nav-btn px-3 py-2 rounded-lg hover:text-green-600 hover:bg-green-50 transition">✍️ 文案撰寫</a>
+            <a href="video.html" class="nav-btn px-3 py-2 rounded-lg hover:text-green-600 hover:bg-green-50 transition">🎬 短影音</a>
+            <a href="photoshop.html" class="nav-btn px-3 py-2 rounded-lg hover:text-green-600 hover:bg-green-50 transition">🎨 PS</a>
+            <a href="illustrator.html" class="nav-btn px-3 py-2 rounded-lg hover:text-green-600 hover:bg-green-50 transition">✒️ AI</a>
         </nav>
-
-        <!-- 手機版選單按鈕 -->
-        <button id="hamburger-btn" class="md:hidden p-2 rounded-xl text-gray-600 hover:bg-gray-100">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
     </div>
-
-    <!-- 手機版下拉選單 -->
-    <nav id="navbar" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-4 space-y-1">
-        <a href="index.html" class="nav-btn block px-4 py-2 rounded-xl text-gray-700">🏠 首頁</a>
-        <a href="copywriting.html" class="nav-btn block px-4 py-2 rounded-xl text-gray-700">✍️ 文案撰寫</a>
-        <a href="video.html" class="nav-btn block px-4 py-2 rounded-xl text-gray-700">🎬 短影音</a>
-        <a href="photoshop.html" class="nav-btn block px-4 py-2 rounded-xl text-gray-700">🎨 PS (Photoshop)</a>
-        <a href="illustrator.html" class="nav-btn block px-4 py-2 rounded-xl text-gray-700">✒️ AI (Illustrator)</a>
-    </nav>
 </div>
 
 <script>
-    // 漢堡選單控制
-    document.getElementById('hamburger-btn')?.addEventListener('click', () => {
-        document.getElementById('navbar')?.classList.toggle('hidden');
-    });
-
-    // 自動高亮當前頁面
-    const page = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-btn').forEach(a => {
-        if (a.getAttribute('href') === page) {
-            a.classList.add('text-green-600', 'bg-green-50', 'font-bold');
+    // 自動幫目前點到的頁面按鈕變綠色
+    const current = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.getAttribute('href') === current) {
+            btn.classList.add('text-green-600', 'bg-green-50', 'font-bold');
         }
     });
 </script>
