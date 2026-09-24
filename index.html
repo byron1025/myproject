@@ -16,8 +16,9 @@
       
       <nav class="navbar" id="navbar">
         <button class="nav-btn active" onclick="switchTab(event, 'home')">🏠 首頁</button>
+        <button class="nav-btn" onclick="switchTab(event, 'copywriting')">✍️ 文案撰寫</button>
         <button class="nav-btn" onclick="switchTab(event, 'video')">🎬 短影音</button>
-        <button class="nav-btn" onclick="switchTab(event, 'ps')">🎨 PS (Photoshop)</button>
+        <button class="nav-btn" onclick="switchTab(event, 'ps')">🎨 PS (Photoshop)</button> 
         <button class="nav-btn" onclick="switchTab(event, 'ai')">✒️ ILLUSTRATOR</button>
         <button class="nav-btn" onclick="switchTab(event, 'marketing')">📈 網路行銷</button>
       </nav>
@@ -29,8 +30,12 @@
     <!-- 1. 首頁 -->
     <section id="home" class="tab-content active">
       <h2>🏠 歡迎來到我的個人網站</h2>
-      <p>這裡展示我的各項專業領域，包含短影音創作、視覺設計與網路行銷企劃。</p>
+      <p>這裡展示我的各項專業領域，包含文案撰寫、短影音創作、視覺設計與網路行銷企劃。</p>
       <div class="card-grid">
+        <div class="info-card">
+          <h3>✍️ 文案撰寫</h3>
+          <p>品牌故事、產品銷售頁、社群貼文與SEO文章。</p>
+        </div>
         <div class="info-card">
           <h3>🎬 短影音</h3>
           <p>剪輯、腳本發想與社群短影音企劃。</p>
@@ -46,7 +51,23 @@
       </div>
     </section>
 
-    <!-- 2. 短影音 -->
+    <!-- 2. 文案撰寫 -->
+    <section id="copywriting" class="tab-content">
+      <h2>✍️ 文案撰寫作品</h2>
+      <p>涵蓋品牌故事、社群貼文、商業銷售文案與SEO關鍵字文章企劃。</p>
+      <div class="card-grid">
+        <div class="info-card">
+          <h4>📝 社群互動與產品推廣文案</h4>
+          <p>針對目標受眾痛點設計標題與內容，提升社群觸及率與轉發率。</p>
+        </div>
+        <div class="info-card">
+          <h4>📖 品牌故事與產品銷售頁 (Landing Page)</h4>
+          <p>透過故事行銷建立品牌價值，結合高轉換率的落地頁文案架構。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 短影音 -->
     <section id="video" class="tab-content">
       <h2>🎬 短影音作品</h2>
       <p>收錄短影音企劃、剪輯與特效創作。</p>
@@ -62,7 +83,7 @@
       </div>
     </section>
 
-    <!-- 3. Photoshop -->
+    <!-- 4. Photoshop -->
     <section id="ps" class="tab-content">
       <h2>🎨 Photoshop 設計作品</h2>
       <p>修圖、合成與數位海報視覺設計。</p>
@@ -74,7 +95,7 @@
       </div>
     </section>
 
-    <!-- 4. Illustrator -->
+    <!-- 5. Illustrator -->
     <section id="ai" class="tab-content">
       <h2>✒️ Illustrator 向量設計</h2>
       <p>標誌設計、圖示（Icon）與向量插圖。</p>
@@ -86,7 +107,7 @@
       </div>
     </section>
 
-    <!-- 5. 網路行銷 -->
+    <!-- 6. 網路行銷 -->
     <section id="marketing" class="tab-content">
       <h2>📈 網路行銷企劃</h2>
       <p>社群行銷策略、文案撰寫與活動規劃。</p>
