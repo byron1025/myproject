@@ -38,6 +38,9 @@ header {
   transition: all 0.3s;
   width: 100%;
   text-align: center;
+  text-decoration: none; /* 去掉 <a> 標籤下底線 */
+  display: block;        /* 讓 <a> 標籤佔滿點擊區域 */
+  box-sizing: border-box; /* 防止邊框擠壓跑版 */
 }
 
 .nav-btn:hover {
@@ -126,4 +129,11 @@ header {
 .info-card h3, .info-card h4 {
   margin-top: 0;
   color: #0284c7;
+}
+
+/* 連結型卡片樣式修正 (去除底線與預設文字顏色) */
+.info-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
