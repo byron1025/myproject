@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>富國腳踏車店 | 企業分析與行銷策略報告</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     /* 全域設定 */
     body {
@@ -122,22 +123,10 @@
     }
   </style>
 </head>
-<header>
-    <div class="nav-container">
-      <button class="hamburger" id="hamburger-btn" aria-label="選單">☰</button>
-      <nav class="navbar" id="navbar">
-        <!-- 注意：首頁此處有 active -->
-        <a href="index.html" class="nav-btn active">🏠 首頁</a>
-        <a href="copywriting.html" class="nav-btn">✍️ 文案撰寫</a>
-        <a href="video.html" class="nav-btn">🎬 短影音</a>
-        <a href="photoshop.html" class="nav-btn">🎨 PS (Photoshop)</a> 
-        <a href="illustrator.html" class="nav-btn">✒️ ILLUSTRATOR</a>
-        <a href="marketing.html" class="nav-btn">📈 網路行銷</a>
-      </nav>
-    </div>
-  </header>
-  
 <body>
+
+  <!-- 頂部共用導覽列容器（由 JS 自動讀取並填入 header.html 的內容） -->
+  <header id="global-header"></header>
 
   <!-- 頁首 -->
   <header class="header">
@@ -332,5 +321,31 @@
     </div>
   </div>
 
+  <!-- 自動載入 header.html 腳本 -->
+  <script>
+    fetch('header.html')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('無法載入 header.html');
+        }
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('global-header').innerHTML = data;
+
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('#navbar a');
+        
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      })
+      .catch(error => console.error('載入導覽列失敗:', error));
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
