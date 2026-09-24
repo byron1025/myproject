@@ -15,21 +15,21 @@
       color: #334155;
     }
 
-    /* 頁首樣式 */
-    .header {
+    /* 頁首 / Hero 區塊樣式 */
+    .hero-header {
       background-color: #ffffff;
       padding: 40px 20px;
       text-align: center;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       margin-bottom: 40px;
     }
-    .header h1 {
+    .hero-header h1 {
       margin: 0;
       font-size: 32px;
       color: #0f172a;
       letter-spacing: 1px;
     }
-    .header p {
+    .hero-header p {
       margin: 10px 0 0 0;
       font-size: 16px;
       color: #64748b;
@@ -42,10 +42,10 @@
       padding: 0 20px 60px 20px;
     }
 
-    /* 網格系統：採用自適應卡片設計 */
+    /* 網格系統：將最小寬度從 500px 調整為 340px，適應更多螢幕解析度 */
     .report-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 30px;
     }
 
@@ -65,6 +65,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
+      cursor: pointer; /* 增加手勢點擊提示 */
     }
     .report-card:hover {
       transform: translateY(-8px);
@@ -125,203 +126,203 @@
 </head>
 <body>
 
-  <!-- 頂部共用導覽列容器（由 JS 自動讀取並填入 header.html 的內容） -->
+  <!-- 頂部共用導覽列容器 -->
   <header id="global-header"></header>
 
-  <!-- 頁首 -->
-  <header class="header">
+  <!-- 頁面主標題區 -->
+  <section class="hero-header">
     <h1>富國腳踏車店</h1>
     <p>企業分析與行銷策略報告展示</p>
-  </header>
+  </section>
 
   <!-- 報告展示區 -->
-  <div class="report-wrapper">
+  <main class="report-wrapper">
     <div class="report-grid">
 
       <!-- 卡片 1 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing1.jpg" alt="報告封面">
+          <img src="./images/marketing1.jpg" alt="報告封面" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Cover</span>
           <h2 class="title">企業分析與行銷策略報告</h2>
           <p class="desc">富國腳踏車店專屬行銷企劃封面，由陳皇名報告。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 2 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing2.jpg" alt="企業簡介">
+          <img src="./images/marketing2.jpg" alt="企業簡介" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 1</span>
           <h2 class="title">企業簡介</h2>
           <p class="desc">一甲子，只為你的安全。展現資深黑手底子與紮實的維修手藝。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 3 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing3.jpg" alt="關於富國腳踏車店">
+          <img src="./images/marketing3.jpg" alt="關於富國腳踏車店" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 1</span>
           <h2 class="title">關於富國腳踏車店</h2>
           <p class="desc">六十年的信任、安全與手藝。強調實體店家負責與到府服務的承諾。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 4 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing4.jpg" alt="PEST 分析">
+          <img src="./images/marketing4.jpg" alt="PEST 分析" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 2</span>
           <h2 class="title">PEST 總體環境分析</h2>
           <p class="desc">深入剖析政治 (P)、經濟 (E)、社會 (S) 與科技 (T) 四大面向對自行車產業的影響。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 5 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing5.jpg" alt="SWOT 分析">
+          <img src="./images/marketing5.jpg" alt="SWOT 分析" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 3</span>
           <h2 class="title">SWOT 交叉策略矩陣</h2>
           <p class="desc">透過 TOWS 矩陣，擬定 SO、ST、WO、WT 策略，發揮 60 年專業優勢並應對外部挑戰。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 6 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing6.jpg" alt="目標受眾">
+          <img src="./images/marketing6.jpg" alt="目標受眾" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 4</span>
           <h2 class="title">目標受眾定位</h2>
           <p class="desc">聚焦三大高終身價值 (LTV) 客群：中高齡 E-bike 代步族、在地短距離購車族與老主顧。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 7 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing7.jpg" alt="賣方 4P 與買方 4C 分析">
+          <img src="./images/marketing7.jpg" alt="賣方 4P 與買方 4C 分析" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 5</span>
           <h2 class="title">賣方 4P 與買方 4C 分析</h2>
           <p class="desc">結合產品價值、價格成本、通路便利性與推廣溝通，打造全方位行銷組合。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 8 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing8.jpg" alt="價值導向的定價策略">
+          <img src="./images/marketing8.jpg" alt="價值導向的定價策略" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 6</span>
           <h2 class="title">價值導向的定價策略</h2>
           <p class="desc">透過透明定價與精準客群篩選，建立專業壁壘，提供差異化服務價值以脫離價格戰。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 9 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing9.jpg" alt="數位與實體整合的社群經營">
+          <img src="./images/marketing9.jpg" alt="數位與實體整合的社群經營" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 7</span>
           <h2 class="title">數位與實體整合社群經營</h2>
           <p class="desc">B2C 之 O2O 線上導線下策略，涵蓋 Google 商家檔案優化與內容行銷。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 10 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing10.jpg" alt="數據驅動的行銷佈局">
+          <img src="./images/marketing10.jpg" alt="數據驅動的行銷佈局" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 8</span>
           <h2 class="title">數據驅動的行銷佈局</h2>
           <p class="desc">透過精準關鍵字策略、流量分析追蹤與成效指標設定，動態調整行銷資源。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 11 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing11.jpg" alt="預算規劃與分配">
+          <img src="./images/marketing11.jpg" alt="預算規劃與分配" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 9</span>
           <h2 class="title">預算規劃與資源分配</h2>
           <p class="desc">針對各項數位行銷與實體活動，進行合理的資金與人力資源佈局規劃。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 12 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing12.jpg" alt="專案執行時程">
+          <img src="./images/marketing12.jpg" alt="專案執行時程" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 10</span>
           <h2 class="title">專案執行時程 (Gantt Chart)</h2>
           <p class="desc">列出短、中、長期的行銷推廣計畫里程碑，確保各階段策略準時落地。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 13 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing13.jpg" alt="預期效益">
+          <img src="./images/marketing13.jpg" alt="預期效益" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 11</span>
           <h2 class="title">預期效益評估</h2>
           <p class="desc">預估策略執行後，在品牌聲量、顧客留存率與整體營業額的實質成長目標。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 14 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing14.jpg" alt="風險評估">
+          <img src="./images/marketing14.jpg" alt="風險評估" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Ch. 12</span>
           <h2 class="title">風險評估與控管機制</h2>
           <p class="desc">列舉潛在的市場變動與價格競爭風險，並提出對應的防禦與備案措施。</p>
         </div>
-      </div>
+      </article>
 
       <!-- 卡片 15 -->
-      <div class="report-card">
+      <article class="report-card">
         <div class="img-container">
-          <img src="./images/marketing15.jpg" alt="結語與未來展望">
+          <img src="./images/marketing15.jpg" alt="結語與未來展望" loading="lazy">
         </div>
         <div class="info-box">
           <span class="tag">Conclusion</span>
           <h2 class="title">結語與未來展望</h2>
           <p class="desc">堅守 60 年職人精神，透過數位轉型與社群深耕，打造下一個輝煌的里程碑。</p>
         </div>
-      </div>
+      </article>
 
     </div>
-  </div>
+  </main>
 
-  <!-- 自動載入 header.html 腳本 -->
+  <!-- 自動載入 header.html 與初始化選單事件 -->
   <script>
     fetch('header.html')
       .then(response => {
@@ -331,8 +332,10 @@
         return response.text();
       })
       .then(data => {
+        // 1. 注入 Header 內容
         document.getElementById('global-header').innerHTML = data;
 
+        // 2. 高亮當前頁面連結
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         const navLinks = document.querySelectorAll('#navbar a');
         
@@ -343,6 +346,16 @@
             link.classList.remove('active');
           }
         });
+
+        // 3. 自動綁定漢堡選單開關事件（解決跨頁面動態載入的點擊失效問題）
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navbar = document.getElementById('navbar');
+
+        if (hamburgerBtn && navbar) {
+          hamburgerBtn.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+          });
+        }
       })
       .catch(error => console.error('載入導覽列失敗:', error));
   </script>
