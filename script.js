@@ -1,28 +1,65 @@
-// 頁籤切換功能
-function switchTab(event, tabId) {
-  // 隱藏所有頁籤內容
-  const contents = document.querySelectorAll('.tab-content');
-  contents.forEach(content => content.classList.remove('active'));
-
-  // 移除所有導覽按鈕的 active 狀態
-  const buttons = document.querySelectorAll('.nav-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
-
-  // 顯示當前點擊的頁籤與啟用按鈕樣式
-  document.getElementById(tabId).classList.add('active');
-  event.currentTarget.classList.add('active');
-
-  // 手機版點擊選單項目後自動收起漢堡選單
-  const navbar = document.getElementById('navbar');
-  navbar.classList.remove('show');
-}
-
-// 漢堡選單開關功能
+/**
+ * 腳本邏輯 (script.js)
+ * 包含動態載入 header.html、漢堡選單切換與自動高亮當前頁面
+ */
 document.addEventListener("DOMContentLoaded", () => {
-  const hamburgerBtn = document.getElementById('hamburger-btn');
-  const navbar = document.getElementById('navbar');
+  const headerPlaceholder = document.getElementById("header-placeholder");
 
-  hamburgerBtn.addEventListener('click', () => {
-    navbar.classList.toggle('show');
-  });
+  if (headerPlaceholder) {
+    // 1. 自動動態載入 header.html
+    fetch("header.html")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("無法讀取 header.html 檔案");
+        }
+        return response.text();
+      })
+      .then((htmlData) => {
+        headerPlaceholder.innerHTML = htmlData;
+        initNavigation();
+      })
+      .catch((error) => {
+        console.error("載入 Header 失敗:", error);
+      });
+  } else {
+    initNavigation();
+  }
 });
+
+/**
+ * 初始化導覽列互動事件與當前頁面高亮
+ */
+function initNavigation() {
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const navbar = document.getElementById("navbar");
+  const navLinks = document.querySelectorAll(".nav-btn");
+
+  // 1. 漢堡選單點擊切換
+  if (hamburgerBtn && navbar) {
+    hamburgerBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navbar.classList.toggle("active");
+      hamburgerBtn.classList.toggle("open");
+    });
+
+    // 點擊頁面其他地方時自動關閉選單
+    document.addEventListener("click", (e) => {
+      if (!navbar.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        navbar.classList.remove("active");
+        hamburgerBtn.classList.remove("open");
+      }
+    });
+  }
+
+  // 2. 自動比對網址並加上 active 高亮效果
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (href === currentPath) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
