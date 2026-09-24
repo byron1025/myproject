@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- 1. 頂部導覽列容器 (裡面留空，由 JS 自動填入 header.html 的內容) -->
+  <!-- 頂部導覽列容器 (由 JS 自動載入 header.html) -->
   <header id="global-header"></header>
 
   <main class="content-container">
@@ -47,7 +47,7 @@
 
   </main>
 
-  <!-- 2. 自動載入 header.html 並處理當前頁面標亮 (active) 的 JS 語法 -->
+  <!-- 自動載入 header.html 與漢堡選單開關腳本 -->
   <script>
     fetch('header.html')
       .then(response => {
@@ -57,14 +57,13 @@
         return response.text();
       })
       .then(data => {
-        // 將 header.html 的內容放入 <header id="global-header">
+        // 1. 將 header.html 的內容放入 <header id="global-header">
         document.getElementById('global-header').innerHTML = data;
 
-        // 取得目前的檔名 (例如 index.html, copywriting.html)
+        // 2. 取得目前的檔名並自動替當前頁面連結加上 active 樣式
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         const navLinks = document.querySelectorAll('#navbar a');
         
-        // 比對網址，自動替當前頁面的連結加上 active 樣式
         navLinks.forEach(link => {
           if (link.getAttribute('href') === currentPage) {
             link.classList.add('active');
@@ -72,6 +71,16 @@
             link.classList.remove('active');
           }
         });
+
+        // 3. 綁定漢堡選單點擊開關事件（解決手機版點擊無反應問題）
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navbar = document.getElementById('navbar');
+
+        if (hamburgerBtn && navbar) {
+          hamburgerBtn.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+          });
+        }
       })
       .catch(error => console.error('載入導覽列失敗:', error));
   </script>
