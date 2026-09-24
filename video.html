@@ -35,54 +35,8 @@
 </head>
 <body class="bg-gray-50 font-sans text-gray-800 antialiased pt-16">
 
-    <!-- 頂部導覽列 (Navbar) -->
-    <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <!-- Logo 與標題 -->
-                <div class="flex items-center">
-                    <a href="#" class="text-xl font-bold text-gray-900 tracking-tight flex items-center gap-2">
-                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                        </svg>
-                        自行車保養短影音企劃
-                    </a>
-                </div>
-
-                <!-- 電腦版選單 -->
-                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                    <a href="#storyboard" class="text-gray-600 hover:text-brand-600 transition-colors">分鏡腳本</a>
-                    <span class="bg-brand-50 text-brand-700 px-3 py-1 rounded-full border border-brand-100 text-xs font-semibold">
-                        總長度：81 秒
-                    </span>
-                </div>
-
-                <!-- 手機版漢堡選單按鈕 (Hamburger Button) -->
-                <div class="flex items-center md:hidden">
-                    <button id="menu-btn" type="button" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2 rounded-md" aria-label="開啟選單">
-                        <!-- 圖示：三條線 (Hamburger) -->
-                        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                        <!-- 圖示：打叉 (Close) -->
-                        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 手機版下拉選單 (Mobile Menu) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-2 text-sm font-medium shadow-lg">
-            <a href="#storyboard" class="mobile-link block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-50 hover:text-brand-600 transition-colors">分鏡腳本</a>
-            <div class="pt-2 px-3">
-                <span class="inline-block bg-brand-50 text-brand-700 px-3 py-1 rounded-full border border-brand-100 text-xs font-semibold">
-                    總長度：81 秒
-                </span>
-            </div>
-        </div>
-    </nav>
+    <!-- 載入外部 header.html 的容器 -->
+    <header id="header-container" class="fixed top-0 left-0 w-full z-50 bg-white shadow-sm"></header>
 
     <!-- 主內容區 -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
@@ -438,28 +392,21 @@
 
     </main>
 
-    <!-- 漢堡選單控制腳本 -->
+    <!-- 自動載入 header.html 腳本 -->
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const iconOpen = document.getElementById('icon-open');
-        const iconClose = document.getElementById('icon-close');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            iconOpen.classList.toggle('hidden');
-            iconClose.classList.toggle('hidden');
-        });
-
-        // 點擊選單項目後自動關閉選單
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                iconOpen.classList.remove('hidden');
-                iconClose.classList.add('hidden');
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('無法載入 header.html');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('載入 Header 時發生錯誤:', error);
             });
-        });
     </script>
 </body>
 </html>
